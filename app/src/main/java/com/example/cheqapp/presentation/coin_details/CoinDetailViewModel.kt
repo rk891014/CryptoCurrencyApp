@@ -24,7 +24,7 @@ class CoinDetailViewModel @Inject constructor(
 
     init {
         savedStateHandle.get<String>(Constants.PARAM_COIN_ID)?.let {coinId ->
-            getCoin(coinId )
+            getCoin(coinId)
         }
     }
 
