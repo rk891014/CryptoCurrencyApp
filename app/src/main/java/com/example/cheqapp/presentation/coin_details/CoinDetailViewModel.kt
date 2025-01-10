@@ -43,5 +43,4 @@ class CoinDetailViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
-
 }
