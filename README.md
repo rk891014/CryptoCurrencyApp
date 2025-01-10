@@ -1,4 +1,3 @@
-# CryptoCurrencyApp
 Cryptocurrency App 📊
 A modern cryptocurrency app built with Kotlin and Jetpack Compose, showcasing a list of all cryptocurrencies with the ability to view detailed descriptions of individual coins. The app also features a powerful search functionality to easily find specific coins.
 
