@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import com.example.cheqapp.data.remote.dto.TeamMember
@@ -27,9 +28,10 @@ fun TeamListItem(
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = teamMember.position,
+            text = teamMember.name,
             style = MaterialTheme.typography.titleMedium,
-            fontStyle = FontStyle.Italic
+            fontStyle = FontStyle.Italic,
+            color = Color.Gray
         )
     }
 }

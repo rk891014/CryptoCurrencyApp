@@ -19,16 +19,17 @@ fun CoinTag(
 ) {
     Box(
         modifier = Modifier
+            .padding(5.dp) // Outer padding (margin-like effect)
             .border(
                 width = 1.dp,
                 color = Color.Green,
                 shape = RoundedCornerShape(100.dp)
             )
-            .padding(10.dp)
+            .padding(10.dp) // Inner padding (space between the border and the content)
     ) {
         Text(
             text = tag.name,
-            color = Color.Red,
+            color = Color.Green,
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.titleSmall
         )

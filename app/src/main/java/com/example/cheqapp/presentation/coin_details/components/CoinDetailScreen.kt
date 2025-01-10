@@ -23,13 +23,11 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import com.example.cheqapp.presentation.Screen
 import com.example.cheqapp.presentation.coin_details.CoinDetailViewModel
-import com.example.cheqapp.presentation.coin_list.CoinListViewModel
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -49,8 +47,9 @@ fun CoinDetailScreen(
                     ) {
                         Text(
                             text = "${coin.rank}. ${coin.name} (${coin.symbol})",
-                            style = MaterialTheme.typography.titleMedium,
-                            modifier = Modifier.weight(8f)
+                            style = MaterialTheme.typography.bodyLarge,
+                            modifier = Modifier.weight(8f),
+                            fontWeight = FontWeight.Bold
                         )
                         Text(
                             text = if(coin.isActive) "active" else "inactive",
@@ -62,10 +61,17 @@ fun CoinDetailScreen(
                                 .weight(2f)
                         )
                     }
+                    Text(
+                        text = coin.description,
+                        style = MaterialTheme.typography.titleSmall,
+                        color = Color.Gray,
+                        modifier = Modifier.padding(horizontal = 5.dp, vertical = 10.dp)
+                    )
                     Spacer(modifier = Modifier.height(15.dp))
                     Text(
                         text = "Tags",
-                        style = MaterialTheme.typography.titleSmall
+                        style = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Bold
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                     FlowRow (
@@ -80,7 +86,8 @@ fun CoinDetailScreen(
                     Spacer(modifier = Modifier.height(15.dp))
                     Text(
                         text = "Team Members",
-                        style = MaterialTheme.typography.titleSmall
+                        style = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Bold
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                 }
