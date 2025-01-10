@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.cheqapp.common.Constants
 import com.example.cheqapp.common.Resources
 import com.example.cheqapp.domain.use_case.get_coin.GetCoinUseCase
-import com.example.cheqapp.presentation.coin_list.CoinListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -25,7 +24,7 @@ class CoinDetailViewModel @Inject constructor(
 
     init {
         savedStateHandle.get<String>(Constants.PARAM_COIN_ID)?.let {coinId ->
-            getCoin(coinId)
+            getCoin(coinId )
         }
     }
 
