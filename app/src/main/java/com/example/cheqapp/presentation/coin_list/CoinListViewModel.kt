@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cheqapp.common.Resources
+import com.example.cheqapp.domain.model.Coin
 import com.example.cheqapp.domain.use_case.get_coins.GetCoinsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -24,6 +25,7 @@ class CoinListViewModel @Inject constructor(
 
     private val _state = mutableStateOf(CoinListState())
     val state: State<CoinListState> = _state
+    private var coinList: List<Coin>? = emptyList()
 
     init {
         getCoins()
@@ -36,6 +38,7 @@ class CoinListViewModel @Inject constructor(
                     _state.value = CoinListState(isLoading = true)
                 }
                 is Resources.Success -> {
+                    coinList = result.data?.toList()
                     _state.value = CoinListState(coins = result.data ?: emptyList())
                 }
                 is Resources.Error -> {
@@ -43,6 +46,19 @@ class CoinListViewModel @Inject constructor(
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    fun onSearchTextChange(searchedStr: String?) {
+        val searchList = coinList?.filter {
+            it.name.contains(searchedStr.orEmpty(), ignoreCase = true)
+        }
+
+        if(searchList?.isEmpty() == true){
+            _state.value = CoinListState(isEmpty = true)
+        } else {
+            _state.value = CoinListState(coins = searchList ?: emptyList())
+        }
+
     }
 
 }
